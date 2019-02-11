@@ -225,7 +225,7 @@ function liffGetUserService(service) {
         uiStatusError(makeErrorMsg(error), false);
     });
     
-    //<190211>ここから
+    /*//<190211>ここから
         // Read value
     service.getCharacteristic(READ_CHARACTERISTIC_UUID).then(characteristic => {
         return characteristic.readValue();
@@ -236,7 +236,7 @@ function liffGetUserService(service) {
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
-    //ここまで
+    //ここまで*/
 }
 
 function liffGetPSDIService(service) {
