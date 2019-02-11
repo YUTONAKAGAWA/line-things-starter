@@ -224,6 +224,19 @@ function liffGetUserService(service) {
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
+    
+    //<190211>ここから
+        // Read value
+    service.getCharacteristic(READ_CHARACTERISTIC_UUID).then(characteristic => {
+        return characteristic.readValue();
+    }).then(value => {
+        // Convert byte buffer to Int32 in little endian
+        const value = new DataView(value.buffer).getInt32(0, true);
+        document.getElementById("total-count").innerText = value;
+    }).catch(error => {
+        uiStatusError(makeErrorMsg(error), false);
+    });
+    //ここまで
 }
 
 function liffGetPSDIService(service) {
